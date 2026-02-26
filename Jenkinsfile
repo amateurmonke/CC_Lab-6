@@ -30,12 +30,12 @@ pipeline {
                 docker rm -f nginx-lb || true
 
                 docker run -d \
-                  --name nginx-lb \
-                  --network app-network \
-                  -p 8081:80 \
-                  -v $(pwd)/nginx:/etc/nginx/conf.d \
-                  nginx
-                '''
+              --name nginx-lb \
+              --network app-network \
+              -p 8081:80 \
+              -v $(pwd)/nginx/default.conf:/etc/nginx/conf.d/default.conf \
+          nginx
+        '''
             }
         }
     }
